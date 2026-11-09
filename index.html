@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Wedding of Lukman &amp; Cinta</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg"></div>
+
+<div id="cover">
+  <div class="cv-in">
+    <p class="cv-top">The Wedding of</p>
+    <div class="cv-main">
+      <h1 class="names" id="cvNames"></h1>
+      <p class="cv-date" id="cvDate"></p>
+      <div class="cv-guest"><small>Kepada Yth. Bapak/Ibu/Saudara/i</small><b id="tamu">Tamu Undangan</b></div>
+      <button class="cv-btn" id="open"><span>Buka Undangan</span><i>↓</i></button>
+    </div>
+  </div>
+</div>
+
+<section id="home">
+  <p class="sm">The Wedding of</p>
+  <h1 class="names" id="hNames"></h1>
+  <div class="badge" id="hTgl"></div>
+  <div class="count"><div><b id="d">0</b><small>Hari</small></div><div><b id="h">0</b><small>Jam</small></div><div><b id="m">0</b><small>Menit</small></div><div><b id="s">0</b><small>Detik</small></div></div>
+</section>
+
+<section id="salam">
+  <div class="card rv">
+    <p class="sm" style="color:#b48a4a">Assalamu’alaikum Wr. Wb.</p>
+    <h2>Dengan Rahmat Allah SWT</h2>
+    <p class="quote">“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.”</p>
+    <p style="margin-top:10px"><b>QS. Ar-Rum: 21</b></p>
+  </div>
+</section>
+
+<section id="mempelai">
+  <p class="sm">Mempelai</p><h2>Yang Berbahagia</h2>
+  <div class="row rv">
+    <div class="card"><div class="ph" data-slot="pria">Foto<br>Mempelai Pria</div><div class="script" id="nP"></div><p style="margin-top:6px"><b id="fP"></b><br><span id="oP"></span></p></div>
+    <div class="card"><div class="ph" data-slot="wanita">Foto<br>Mempelai Wanita</div><div class="script" id="nW"></div><p style="margin-top:6px"><b id="fW"></b><br><span id="oW"></span></p></div>
+  </div>
+</section>
+
+<section id="acara">
+  <p class="sm">Save the Date</p><h2>Rangkaian Acara</h2>
+  <div class="row rv" id="acaraList"></div>
+</section>
+
+<section id="lokasi">
+  <div class="card rv">
+    <p class="sm" style="color:#b48a4a">Lokasi</p><h2 id="lokNama"></h2>
+    <p id="lokAlamat"></p><br>
+    <a class="btn" id="maps" target="_blank" rel="noopener">📍 Buka Google Maps</a>
+  </div>
+</section>
+
+<section id="galeri">
+  <p class="sm">Galeri</p><h2>Momen Kebahagiaan</h2>
+  <div class="gal rv" id="gal"></div>
+</section>
+
+<section id="hadiah">
+  <div class="card rv">
+    <p class="sm" style="color:#b48a4a">Amplop Digital</p><h2>Tanda Kasih</h2>
+    <p>Doa restu Anda adalah hadiah terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
+    <div id="rekList"></div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="card wide rv">
+    <p class="sm" style="color:#b48a4a">Sebuah hari yang istimewa</p>
+    <h2>Konfirmasi &amp; Ucapan</h2>
+    <div class="grid">
+      <div class="box">
+        <h3>Konfirmasi Kehadiran</h3>
+        <label for="nama">Nama lengkap</label><input type="text" id="nama" placeholder="Tulis nama lengkap Anda">
+        <label>Konfirmasi kehadiran</label>
+        <div class="rd"><label><input type="radio" name="hd" value="Hadir" checked> Ya, saya akan hadir</label><label><input type="radio" name="hd" value="Tidak hadir"> Maaf, tidak dapat hadir</label></div>
+        <label for="ucap">Doa dan ucapan</label><textarea id="ucap"></textarea>
+        <button class="btn" id="kirim">Kirim Konfirmasi</button>
+      </div>
+      <div class="box">
+        <h3>Buku Tamu</h3>
+        <div id="list"><p style="text-align:center;padding:40px 0">♡<br>Belum ada ucapan. Jadilah yang pertama menitipkan doa untuk kami.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="penutup">
+  <p style="max-width:520px;line-height:1.8;opacity:.95">Merupakan kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+  <p style="margin-top:14px">Wassalamu’alaikum Wr. Wb.</p>
+  <h1 class="names" id="pNames"></h1>
+  <p class="sm">Kami yang berbahagia</p>
+</section>
+<footer>Dibuat dengan cinta · The Wedding of Lukman &amp; Cinta</footer>
+
+<nav><a href="#home">Beranda</a><a href="#mempelai">Mempelai</a><a href="#acara">Acara</a><a href="#lokasi">Lokasi</a><a href="#galeri">Galeri</a><a href="#hadiah">Hadiah</a><a href="#rsvp">Ucapan</a></nav>
+<button id="mus" title="Pilih musik">🎵</button>
+<input type="file" id="fMus" accept="audio/*" hidden>
+
+<script src="script.js"></script>
+</body>
+</html>
