@@ -3,21 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5eddd">
+<meta name="description" content="Undangan pernikahan Lukman &amp; Cinta, Sabtu 12 Desember 2026.">
 <title>The Wedding of Lukman &amp; Cinta</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💍%3C/text%3E%3C/svg%3E">
+
+<!-- Pratinjau link WhatsApp: ganti domain-anda.com dengan domain undangan Anda -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://domain-anda.com/">
+<meta property="og:title" content="The Wedding of Lukman &amp; Cinta">
+<meta property="og:description" content="Sabtu, 12 Desember 2026 - Kami mengundang Anda di hari bahagia kami.">
+<meta property="og:image" content="https://domain-anda.com/foto/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600&family=DM+Sans:wght@400;700&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<noscript><style>body.locked{overflow:auto}#cover{display:none}.rv,#home>*,.fl{opacity:1;transform:none;filter:none}</style></noscript>
 </head>
-<body>
+<body class="locked">
 <div class="bg"></div>
+<div id="prog" aria-hidden="true"></div>
 
 <div id="cover">
+  <div class="cv-deco" aria-hidden="true">
+    <img class="fl fl-l" src="foto/bunga.png" alt="" width="200" height="200" decoding="async">
+    <img class="fl fl-r" src="foto/bunga.png" alt="" width="200" height="200" decoding="async">
+  </div>
   <div class="cv-in">
-    <p class="cv-top">The Wedding of</p>
     <div class="cv-main">
-      <h1 class="names" id="cvNames"></h1>
-      <p class="cv-date" id="cvDate"></p>
-      <div class="cv-guest"><small>Kepada Yth. Bapak/Ibu/Saudara/i</small><b id="tamu">Tamu Undangan</b></div>
-      <button class="cv-btn" id="open"><span>Buka Undangan</span><i>↓</i></button>
+      <div class="names" id="cvNames"></div>
+      <div class="cv-divider" aria-hidden="true"><i>❧</i></div>
+      <div class="cv-guest"><small>Kepada Bapak/Ibu/Saudara/i</small><b id="tamu">Tamu Undangan</b></div>
+      <button class="cv-btn" id="open"><span aria-hidden="true">✉</span><span>Buka Undangan</span></button>
     </div>
   </div>
 </div>
@@ -26,13 +46,15 @@
   <p class="sm">The Wedding of</p>
   <h1 class="names" id="hNames"></h1>
   <div class="badge" id="hTgl"></div>
-  <div class="count"><div><b id="d">0</b><small>Hari</small></div><div><b id="h">0</b><small>Jam</small></div><div><b id="m">0</b><small>Menit</small></div><div><b id="s">0</b><small>Detik</small></div></div>
+  <div class="count" id="count"><div><b id="d">0</b><small>Hari</small></div><div><b id="h">0</b><small>Jam</small></div><div><b id="m">0</b><small>Menit</small></div><div><b id="s">0</b><small>Detik</small></div></div>
+  <a class="btn gh" id="kal" target="_blank" rel="noopener">📅 Simpan di Kalender</a>
 </section>
 
 <section id="salam">
-  <div class="card rv">
-    <p class="sm" style="color:#b48a4a">Assalamu’alaikum Wr. Wb.</p>
+  <div class="card rv" data-d="zoom">
+    <p class="sm">Assalamu’alaikum Wr. Wb.</p>
     <h2>Dengan Rahmat Allah SWT</h2>
+    <p class="quote arabic" lang="ar" dir="rtl">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
     <p class="quote">“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.”</p>
     <p style="margin-top:10px"><b>QS. Ar-Rum: 21</b></p>
   </div>
@@ -41,22 +63,52 @@
 <section id="mempelai">
   <p class="sm">Mempelai</p><h2>Yang Berbahagia</h2>
   <div class="row rv">
-    <div class="card"><div class="ph" data-slot="pria">Foto<br>Mempelai Pria</div><div class="script" id="nP"></div><p style="margin-top:6px"><b id="fP"></b><br><span id="oP"></span></p></div>
-    <div class="card"><div class="ph" data-slot="wanita">Foto<br>Mempelai Wanita</div><div class="script" id="nW"></div><p style="margin-top:6px"><b id="fW"></b><br><span id="oW"></span></p></div>
+    <div class="card rv">
+    <img class="mempelai-flower flower-blossom" src="foto/bunga.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <i class="crn tl" aria-hidden="true"></i><i class="crn tr" aria-hidden="true"></i>
+      <i class="crn bl" aria-hidden="true"></i><i class="crn br" aria-hidden="true"></i>
+      <div class="ph" data-slot="pria">Foto<br>Mempelai Pria</div>
+      <div class="script" id="nP"></div>
+      <div class="orn mempelai-divider" aria-hidden="true"><i>◆ ❦ ◆</i></div>
+      <p style="margin-top:6px"><b id="fP"></b><br><span id="oP"></span></p>
+    </div>
+    <div class="card rv">
+      <img class="mempelai-flower flower-roses" src="foto/bunga1.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <i class="crn tl" aria-hidden="true"></i><i class="crn tr" aria-hidden="true"></i>
+      <i class="crn bl" aria-hidden="true"></i><i class="crn br" aria-hidden="true"></i>
+      <div class="ph" data-slot="wanita">Foto<br>Mempelai Wanita</div>
+      <div class="script" id="nW"></div>
+      <div class="orn mempelai-divider" aria-hidden="true"><i>◆ ❦ ◆</i></div>
+      <p style="margin-top:6px"><b id="fW"></b><br><span id="oW"></span></p>
+    </div>
+  </div>
+</section>
+
+<section id="cerita">
+  <p class="sm">Kisah Kami</p>
+  <h2>Love Story</h2>
+  <div class="card story rv">
+    <i class="crn tl" aria-hidden="true"></i><i class="crn tr" aria-hidden="true"></i><i class="crn bl" aria-hidden="true"></i><i class="crn br" aria-hidden="true"></i>
+    <img class="story-flower story-flower-start" src="foto/bunga.svg" width="635" height="604" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="story-flower story-flower-end" src="foto/bunga1.svg" width="635" height="604" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="story-flower story-flower-pattern pattern-one" src="foto/bunga1.svg" width="635" height="604" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="story-flower story-flower-pattern pattern-two" src="foto/bunga.svg" width="635" height="604" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="story-flower story-flower-pattern pattern-three" src="foto/bunga1.svg" width="635" height="604" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="story-flower story-flower-pattern pattern-four" src="foto/bunga.svg" width="635" height="604" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="story-img rv" src="foto/galeri1.jpg" width="2773" height="4160" alt="Momen kebersamaan kami" loading="lazy" decoding="async">
+    <div class="orn rv" aria-hidden="true"><i>◆ ❦ ◆</i></div>
+    <p class="rv">Katanya, jodoh itu tidak ke mana. Tapi ternyata ia mampir lewat jalan yang tak pernah kami duga. Dua orang yang awalnya hanya saling sapa, pelan-pelan berubah menjadi saling tunggu kabar, lalu saling takut kehilangan.</p>
+    <p class="rv">Lukman, si perangkai kata, mendadak kehabisan kata di hadapan Cinta. Sementara Cinta, yang terbiasa merawat orang lain, diam-diam merasa ada seseorang yang juga merawat hatinya. Satu jago menulis, satu jago menyembuhkan, tapi keduanya sama-sama kalah oleh yang namanya jatuh cinta.</p>
+    <p class="rv">Kami tidak menjanjikan kisah yang sempurna, hanya janji untuk saling menggenggam di hari baik maupun tidak. Maka dengan bismillah dan restu orang tua, pada 12 Desember 2026 kami putuskan: cukup sudah berlari, saatnya pulang ke satu hati. Doakan kami, ya.</p>
+    <div class="orn rv" aria-hidden="true"><i>◆ ❦ ◆</i></div>
+    <img class="story-img rv" src="foto/galeri2.jpg" width="4160" height="2773" alt="Momen bahagia kami bersama" loading="lazy" decoding="async">
   </div>
 </section>
 
 <section id="acara">
   <p class="sm">Save the Date</p><h2>Rangkaian Acara</h2>
-  <div class="row rv" id="acaraList"></div>
-</section>
-
-<section id="lokasi">
-  <div class="card rv">
-    <p class="sm" style="color:#b48a4a">Lokasi</p><h2 id="lokNama"></h2>
-    <p id="lokAlamat"></p><br>
-    <a class="btn" id="maps" target="_blank" rel="noopener">📍 Buka Google Maps</a>
-  </div>
+  <div class="event-countdown"><strong id="eventDays">0</strong><span>hari menuju hari bahagia</span></div>
+  <div class="agenda-list" id="acaraList"></div>
 </section>
 
 <section id="galeri">
@@ -65,16 +117,17 @@
 </section>
 
 <section id="hadiah">
-  <div class="card rv">
-    <p class="sm" style="color:#b48a4a">Amplop Digital</p><h2>Tanda Kasih</h2>
+  <div class="card rv" data-d="zoom">
+    <p class="sm">Amplop Digital</p><h2>Tanda Kasih</h2>
     <p>Doa restu Anda adalah hadiah terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
-    <div id="rekList"></div>
+    <button class="btn gift-btn" id="giftBtn" aria-expanded="false" aria-controls="rekList">🎁 Lihat Rekening</button>
+    <div id="rekList" class="rek-wrap" hidden></div>
   </div>
 </section>
 
 <section id="rsvp">
   <div class="card wide rv">
-    <p class="sm" style="color:#b48a4a">Sebuah hari yang istimewa</p>
+    <p class="sm">Sebuah hari yang istimewa</p>
     <h2>Konfirmasi &amp; Ucapan</h2>
     <div class="grid">
       <div class="box">
@@ -84,6 +137,7 @@
         <div class="rd"><label><input type="radio" name="hd" value="Hadir" checked> Ya, saya akan hadir</label><label><input type="radio" name="hd" value="Tidak hadir"> Maaf, tidak dapat hadir</label></div>
         <label for="ucap">Doa dan ucapan</label><textarea id="ucap"></textarea>
         <button class="btn" id="kirim">Kirim Konfirmasi</button>
+        <p id="status" class="status" role="status"></p>
       </div>
       <div class="box">
         <h3>Buku Tamu</h3>
@@ -94,17 +148,17 @@
 </section>
 
 <section id="penutup">
-  <p style="max-width:520px;line-height:1.8;opacity:.95">Merupakan kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+  <p style="max-width:520px;line-height:1.8">Merupakan kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
   <p style="margin-top:14px">Wassalamu’alaikum Wr. Wb.</p>
-  <h1 class="names" id="pNames"></h1>
+  <div class="names" id="pNames"></div>
   <p class="sm">Kami yang berbahagia</p>
 </section>
 <footer>Dibuat dengan cinta · The Wedding of Lukman &amp; Cinta</footer>
 
-<nav><a href="#home">Beranda</a><a href="#mempelai">Mempelai</a><a href="#acara">Acara</a><a href="#lokasi">Lokasi</a><a href="#galeri">Galeri</a><a href="#hadiah">Hadiah</a><a href="#rsvp">Ucapan</a></nav>
-<button id="mus" title="Pilih musik">🎵</button>
+<nav><a href="#home">Beranda</a><a href="#mempelai">Mempelai</a><a href="#cerita">Kisah</a><a href="#acara">Acara</a><a href="#galeri">Galeri</a><a href="#hadiah">Hadiah</a><a href="#rsvp">Ucapan</a></nav>
+<button id="mus" title="Putar / jeda musik" aria-label="Putar atau jeda musik">🎵</button>
 <input type="file" id="fMus" accept="audio/*" hidden>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>
