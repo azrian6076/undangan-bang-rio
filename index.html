@@ -116,6 +116,21 @@
   <div class="gal rv" id="gal"></div>
 </section>
 
+<div class="gallery-modal" id="galleryModal" role="dialog" aria-modal="true" aria-label="Pratinjau galeri" hidden>
+  <button class="gallery-close" type="button" aria-label="Tutup galeri">×</button>
+  <div class="gallery-header"><span>Galeri</span><small id="galleryCount">1 / 6</small></div>
+  <button class="gallery-nav gallery-prev" type="button" aria-label="Foto sebelumnya">‹</button>
+  <div class="gallery-stage">
+    <img id="galleryImage" src="" alt="">
+  </div>
+  <button class="gallery-nav gallery-next" type="button" aria-label="Foto berikutnya">›</button>
+  <div class="gallery-tools">
+    <button type="button" id="galleryZoomOut" aria-label="Perbesar zoom">−</button>
+    <span id="galleryZoomLabel">100%</span>
+    <button type="button" id="galleryZoomIn" aria-label="Perbesar zoom">+</button>
+  </div>
+</div>
+
 <section id="hadiah">
   <div class="card rv" data-d="zoom">
     <p class="sm">Amplop Digital</p><h2>Tanda Kasih</h2>

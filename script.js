@@ -13,8 +13,8 @@ var C={
   wanita:{foto:"foto/wanita.jpg",pos:"center 20%",pendek:"Cinta",lengkap:"Sisilia Cinta Nilarosa S.Kep",ortu:"Putri dari Bapak Wawan Setiawan (alm.) & Ibu Dwi Sari"},
   tanggal:"2026-12-12", tanggalTeks:"Sabtu, 12 Desember 2026",
   acara:[
-    {judul:"Akad Nikah",jam:"09.00 WIB"},
-    {judul:"Resepsi",jam:"12.00 – 15.00 WIB"}
+    {judul:"Akad Nikah",jam:"09.00 WIB",dibalik:false},
+    {judul:"Resepsi",jam:"12.00 – 15.00 WIB",dibalik:true}
   ],
   /* WAJIB: isi alamat lengkap */
   lokasi:{nama:"Balai Desa Gulon",alamat:"Jl. Raya Magelang No.KM.25, Lojirejo, Gulon, Kec. Salam, Yogyakarta, Jawa Tengah 56484",maps:"https://www.google.com/maps/place/Kantor+Pemerintah+Desa+Gulon,+Jl.+Raya+Magelang+No.KM.25,+Lojirejo,+Gulon,+Salam,+Yogyakarta,+Central+Java+56484/data=!4m2!3m1!1s0x2e7a8af9df9605db:0x9631517ae4544f34!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQzLjAYACCIJyrHASw5NDI2NzcyNyw5NDI5MjE5NSw5NDI5OTUzMiwxMDA3OTY0OTgsMTAwNzk3NzYxLDEwMDc5NjUzNSw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxODY1Myw5NDIyOTgzOSw5NDI3NTE2OCw5NDI3OTYxOSwxMDA4NDgwOTYsMTAwODI1MDI1LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1LDEwMDgzODM1OSwxMjE4MTY0NjFCAklE&skid=4fdbc7dc-ee3b-4f7c-827f-8861245b5f69"},
@@ -43,8 +43,8 @@ var C={
   var tgl=new Date(C.tanggal+'T12:00:00+07:00');
   var hari=new Intl.DateTimeFormat('id-ID',{weekday:'long',timeZone:'Asia/Jakarta'}).format(tgl);
   var bulan=new Intl.DateTimeFormat('id-ID',{month:'long',timeZone:'Asia/Jakarta'}).format(tgl);
-  $('acaraList').innerHTML=C.acara.map(function(a,i){
-    return '<article class="event-card rv'+(i%2?' event-card-reverse':'')+'">'+
+  $('acaraList').innerHTML=C.acara.map(function(a){
+    return '<article class="event-card rv'+(a.dibalik?' event-card-reverse':'')+'">'+
       '<div class="event-label">'+esc(a.judul)+'</div>'+
       '<div class="event-content">'+
         '<div class="event-date"><span class="event-date-label">Tanggal Acara</span><time datetime="'+esc(C.tanggal)+'" aria-label="'+esc(C.tanggalTeks)+'"><span class="event-date-weekday">'+esc(hari)+',</span><strong>'+tgl.getUTCDate()+'</strong><span class="event-date-month">'+esc(bulan)+' '+tgl.getUTCFullYear()+'</span></time></div>'+
@@ -90,8 +90,60 @@ var C={
 
   // Galeri (lazy load; foto yang tidak ada otomatis dibuang)
   $('gal').innerHTML=C.galeri.map(function(u,i){
-    return '<div class="f" style="--i:'+i+'"><img src="'+esc(u)+'" alt="Galeri '+(i+1)+'" loading="lazy" decoding="async"></div>'}).join('');
+    return '<button class="f" type="button" style="--i:'+i+'" data-gallery-index="'+i+'" aria-label="Buka Galeri '+(i+1)+'"><img src="'+esc(u)+'" alt="Galeri '+(i+1)+'" loading="lazy" decoding="async"></button>'}).join('');
   document.querySelectorAll('#gal img').forEach(function(im){im.onerror=function(){im.parentNode.remove()}});
+
+  // Popup galeri
+  var modal=$('galleryModal'),modalImage=$('galleryImage'),zoomLabel=$('galleryZoomLabel');
+  var galleryCount=$('galleryCount');
+  var galleryIndex=0,zoomScale=1,touchX=0;
+  function validGallery(){
+    return C.galeri.filter(function(u){return document.querySelector('#gal img[src="'+u+'"]')});
+  }
+  function tampilGallery(i){
+    var img=document.querySelectorAll('#gal img');
+    if(!img.length)return;
+    galleryIndex=(i+img.length)%img.length;
+    zoomScale=1;
+    modalImage.style.setProperty('--gallery-scale',zoomScale);
+    modalImage.style.animation='none';
+    void modalImage.offsetWidth;
+    modalImage.style.animation='';
+    modalImage.src=img[galleryIndex].src;
+    modalImage.alt=img[galleryIndex].alt;
+    zoomLabel.textContent='100%';
+    galleryCount.textContent=(galleryIndex+1)+' / '+img.length;
+  }
+  function bukaGallery(i){
+    tampilGallery(i);modal.hidden=false;modal.classList.add('open');
+    document.body.classList.add('gallery-open');
+  }
+  function tutupGallery(){modal.classList.remove('open');modal.hidden=true;document.body.classList.remove('gallery-open')}
+  function ubahZoom(delta){
+    zoomScale=Math.max(1,Math.min(3,Math.round((zoomScale+delta)*10)/10));
+    modalImage.style.setProperty('--gallery-scale',zoomScale);
+    zoomLabel.textContent=Math.round(zoomScale*100)+'%';
+  }
+  document.querySelectorAll('#gal .f').forEach(function(el){
+    el.onclick=function(){bukaGallery(Number(el.dataset.galleryIndex))}
+  });
+  modal.querySelector('.gallery-close').onclick=tutupGallery;
+  modal.querySelector('.gallery-prev').onclick=function(){tampilGallery(galleryIndex-1)};
+  modal.querySelector('.gallery-next').onclick=function(){tampilGallery(galleryIndex+1)};
+  $('galleryZoomOut').onclick=function(){ubahZoom(-.25)};
+  $('galleryZoomIn').onclick=function(){ubahZoom(.25)};
+  modal.onclick=function(e){if(e.target===modal)tutupGallery()};
+  document.addEventListener('keydown',function(e){
+    if(modal.hidden)return;
+    if(e.key==='Escape')tutupGallery();
+    if(e.key==='ArrowLeft')tampilGallery(galleryIndex-1);
+    if(e.key==='ArrowRight')tampilGallery(galleryIndex+1);
+  });
+  modal.addEventListener('touchstart',function(e){touchX=e.changedTouches[0].clientX},{passive:true});
+  modal.addEventListener('touchend',function(e){
+    var jarak=e.changedTouches[0].clientX-touchX;
+    if(Math.abs(jarak)>55)tampilGallery(galleryIndex+(jarak<0?1:-1));
+  },{passive:true});
 
   // Background
   root.style.setProperty('--foto','url("'+C.foto+'")');
