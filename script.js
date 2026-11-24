@@ -97,9 +97,6 @@ var C={
   var modal=$('galleryModal'),modalImage=$('galleryImage'),zoomLabel=$('galleryZoomLabel');
   var galleryCount=$('galleryCount');
   var galleryIndex=0,zoomScale=1,touchX=0;
-  function validGallery(){
-    return C.galeri.filter(function(u){return document.querySelector('#gal img[src="'+u+'"]')});
-  }
   function tampilGallery(i){
     var img=document.querySelectorAll('#gal img');
     if(!img.length)return;

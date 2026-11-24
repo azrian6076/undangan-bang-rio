@@ -26,6 +26,10 @@ h2{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(1.7rem,5
 .count b{display:block;font:600 1.5rem 'Playfair Display',serif}
 .count small{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase}
 .count .done{max-width:420px;padding:14px 20px;background:rgba(255,255,255,.16);border-radius:14px;line-height:1.7;font-size:.9rem}
+.guest-policy{position:relative;max-width:520px;margin-top:24px;padding:20px 28px;border:1px solid var(--gold);border-radius:14px;background:linear-gradient(145deg,rgba(31,78,121,.96),rgba(42,62,86,.96));color:var(--gold);font-size:1rem;font-weight:700;line-height:1.6;box-shadow:0 8px 24px rgba(0,0,0,.28),inset 0 0 0 4px rgba(217,181,108,.08)}
+.guest-policy::before,.guest-policy::after{content:"❦";position:absolute;top:-17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold);border-radius:50%;background:#1f4e79;color:#f0d99e;font-size:1.1rem;line-height:1;box-shadow:0 5px 12px rgba(0,0,0,.25)}
+.guest-policy::before{left:18px}
+.guest-policy::after{right:18px}
 
 /* KARTU */
 .card{position:relative;width:100%;max-width:560px;color:#fff;border:1px solid rgba(217,181,108,.55);border-radius:38px 24px 38px 24px;padding:36px 26px;
@@ -67,6 +71,9 @@ h2{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(1.7rem,5
 
 @media(max-width:720px){
   .gallery-modal{padding:58px 12px calc(82px + env(safe-area-inset-bottom));background:rgba(8,16,28,.82)}
+  .gallery-modal{backdrop-filter:none}
+  .gallery-stage img{animation:none}
+  .gallery-close,.gallery-nav,.gallery-tools{backdrop-filter:none}
   .gallery-header{top:max(14px,env(safe-area-inset-top));font-size:.86rem}
   .gallery-close{top:max(12px,env(safe-area-inset-top));right:12px;width:38px;height:38px;font-size:1.45rem}
   .gallery-stage{width:calc(100vw - 24px);height:min(68vh,580px);padding:6px;border-radius:16px}
@@ -257,3 +264,11 @@ body.opened #home>:nth-child(5){animation-delay:.6s}
 @media(max-width:360px){.card{padding:30px 18px}.box{padding:14px}.names{font-size:clamp(2.8rem,15vw,3.6rem)}.count b{font-size:1.25rem}nav a{padding:8px 7px}}
 @media(min-width:900px){section{padding:48px 24px}#acara,#cerita{padding-top:72px;padding-bottom:72px}}
 @media(max-height:480px) and (orientation:landscape){.cv-divider{display:none}.cv-in{padding-bottom:10px}.cv-btn{margin-top:10px;min-height:40px}#cover .names{font-size:2.2rem}#home{min-height:auto;padding:60px 16px}}
+@media(max-width:720px){
+  .bg{background-attachment:scroll}
+  .story-flower,.mempelai-flower{will-change:auto}
+  .story-flower-pattern{display:none}
+  .crn{opacity:.45}
+  .rv{transition-duration:.35s}
+  .gallery-modal,.gallery-tools,.gallery-close,.gallery-nav{box-shadow:none}
+}
